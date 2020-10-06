@@ -23,6 +23,11 @@ namespace UserRegistration
             bool validEmail = validation.validateEmail(email);
             Console.WriteLine("Email Valid : " + validEmail);
             Console.WriteLine("______________________________________________________________________");
+            Console.WriteLine("Enter Mobile Number");
+            string number = Console.ReadLine();
+            bool validNumber = validation.validateNumber(number);
+            Console.WriteLine("Mobile Number Valid : " + validNumber);
+            Console.WriteLine("______________________________________________________________________");
         }
     }
 }
