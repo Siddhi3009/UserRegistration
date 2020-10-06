@@ -12,6 +12,12 @@ namespace UserRegistration
             string fName = Console.ReadLine();
             bool validFirstName = validation.validateFirstName(fName);
             Console.WriteLine("First Name Valid : " + validFirstName);
+            Console.WriteLine("______________________________________________________________________");
+            Console.WriteLine("Enter last name with first letter captial and minimum 3 characters");
+            string lName = Console.ReadLine();
+            bool validLastName = validation.validateLastName(lName);
+            Console.WriteLine("Last Name Valid : " + validLastName);
+            Console.WriteLine("______________________________________________________________________");
         }
     }
 }
