@@ -18,6 +18,11 @@ namespace UserRegistration
             bool validLastName = validation.validateLastName(lName);
             Console.WriteLine("Last Name Valid : " + validLastName);
             Console.WriteLine("______________________________________________________________________");
+            Console.WriteLine("Enter Email");
+            string email = Console.ReadLine();
+            bool validEmail = validation.validateEmail(email);
+            Console.WriteLine("Email Valid : " + validEmail);
+            Console.WriteLine("______________________________________________________________________");
         }
     }
 }
