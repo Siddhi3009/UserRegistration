@@ -9,7 +9,7 @@ namespace UserRegistration
     {
         public static string REGEX_FIRST_NAME = "^[A-Z]{1}[a-z]{2,}$";
         public static string REGEX_LAST_NAME = "^[A-Z]{1}[a-z]{2,}$";
-        public static string REGEX_EMAIL = "^[a-z]{2,}[_+-.]?[a-z0-9]{0,}?@[a-z]{2,}.[a-z]{2,}[.]?[a-z]{2}?";
+        public static string REGEX_EMAIL = "^[a-zA-Z0-9]+([.+-_@#$][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{2})?$";
         public bool validateFirstName(string fName)
         {
             return Regex.IsMatch(fName, REGEX_FIRST_NAME);
