@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using UserRegistration;
 namespace UserRegistrationTest
 {
@@ -112,6 +113,22 @@ namespace UserRegistrationTest
             bool expected = false;
             //Act
             bool result = validate.ValidatePassword("S348gbjdFTY");
+            //Assert
+            Assert.AreEqual(expected, result);
+        }
+        [TestMethod]
+        [DataRow("abc123@gmail.com")]
+        [DataRow("abc123@gmail.com.in")]
+        [DataRow("abc.123@gmail.com")]
+        [DataRow("abc123@gml.com")]
+        [DataRow("abc.123@gmail.com.in")]
+        public void Validate_Multiple_Email_Enteries(string email)
+        {
+            //Arrange
+            UserDetailsValidation validate = new UserDetailsValidation();
+            bool expected = true;
+            //Act
+            bool result = validate.ValidateEmail(email);
             //Assert
             Assert.AreEqual(expected, result);
         }
