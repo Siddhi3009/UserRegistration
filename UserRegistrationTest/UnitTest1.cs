@@ -157,16 +157,15 @@ namespace UserRegistrationTest
             }
         }
         [TestMethod]
-        [DataRow("abc123@gmail.com")]
-        [DataRow("abc123@gmail.com.in")]
-        [DataRow("abc.123@gmail.com")]
-        [DataRow("abc123@gml.com")]
-        [DataRow("abc.123@gmail.com.in")]
-        public void Validate_Multiple_Email_Enteries(string email)
+        [DataRow("abc123@gmail.com", true)]
+        [DataRow("abc123@gmail.com.in", true)]
+        [DataRow("abc.123gmail.com", false)]
+        [DataRow("abc123@gml.com", true)]
+        [DataRow("abc.123@gmail.com.in", true)]
+        public void Validate_Multiple_Email_Enteries(string email, bool expected)
         {
             //Arrange
             UserDetailsValidation validate = new UserDetailsValidation();
-            bool expected = true;
             //Act
             bool result = validate.ValidateEmail(email);
             //Assert
