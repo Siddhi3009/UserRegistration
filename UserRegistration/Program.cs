@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace UserRegistration
 {
@@ -6,33 +7,45 @@ namespace UserRegistration
     {
         static void Main(string[] args)
         {
+            List<ValidationResult> validEnteries = new List<ValidationResult>();
             UserDetailsValidation validation = new UserDetailsValidation();
             Console.WriteLine("User Registration");
+
             Console.WriteLine("Enter first name with first letter captial and minimum 3 characters");
             string fName = Console.ReadLine();
             bool validFirstName = validation.ValidateFirstName(fName);
-            Console.WriteLine("First Name Valid : " + validFirstName);
-            Console.WriteLine("______________________________________________________________________");
+            ValidationResult fNameObj = new ValidationResult(fName, validFirstName);
+            validEnteries.Add(fNameObj);
+            
             Console.WriteLine("Enter last name with first letter captial and minimum 3 characters");
             string lName = Console.ReadLine();
             bool validLastName = validation.ValidateLastName(lName);
-            Console.WriteLine("Last Name Valid : " + validLastName);
-            Console.WriteLine("______________________________________________________________________");
+            ValidationResult lNameObj = new ValidationResult(lName, validLastName);
+            validEnteries.Add(lNameObj);
+           
             Console.WriteLine("Enter Email");
             string email = Console.ReadLine();
             bool validEmail = validation.ValidateEmail(email);
-            Console.WriteLine("Email Valid : " + validEmail);
-            Console.WriteLine("______________________________________________________________________");
+            ValidationResult emailObj = new ValidationResult(email, validEmail);
+            validEnteries.Add(emailObj);
+            
             Console.WriteLine("Enter Mobile Number");
-            string number = Console.ReadLine();
+            string number = Console.ReadLine(); 
             bool validNumber = validation.ValidateNumber(number);
-            Console.WriteLine("Mobile Number Valid : " + validNumber);
-            Console.WriteLine("______________________________________________________________________");
+            ValidationResult numberObj = new ValidationResult(number, validNumber);
+            validEnteries.Add(numberObj);
+            
             Console.WriteLine("Enter Password");
             string password = Console.ReadLine();
             bool validPassword = validation.ValidatePassword(password);
-            Console.WriteLine("Password Valid : " + validPassword);
-            Console.WriteLine("______________________________________________________________________");
+            ValidationResult passwordObj = new ValidationResult(password, validPassword);
+            validEnteries.Add(passwordObj);
+
+            foreach (ValidationResult entry in validEnteries.FindAll(e => e.Result == false))
+            {
+                Console.WriteLine("Invalid Entry : " + entry.UserEntry);
+            }
+            
         }
     }
 }
